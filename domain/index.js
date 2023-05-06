@@ -1,13 +1,10 @@
-const App = require("./index.js")
-
+const Agent = require('./agent')
 module.exports = function(){
-
-    const app = App()
     return Object.freeze({
         createAgent
     })
 
     function createAgent(){
-        return app.createAgent()
+        return Agent()
     }
 }
