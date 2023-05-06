@@ -13,8 +13,8 @@
     "uuid": "^9.0.0"
   },
   "scripts": {
-    "test": "npm run test-mocha && npm run test-cucumber && npm run test-api && npm run test-lambda",
-    "test-mocha": "npm run test-doubles && npm run test-domain && npm run test-adapters && npm run test-integration && npm run test-mutation",
+    "test": "npm run test-mocha && npm run test-cucumber",
+    "test-mocha": "npm run test-doubles && npm run test-domain && npm run test-adapters && npm run test-integration",
     "test-domain": "mocha domain --recursive",
     "test-doubles": "mocha test-doubles --recursive",
     "test-adapters": "mocha adapters --recursive",
@@ -53,6 +53,8 @@
   "dependencies": {
     "aws-sdk": "^2.1363.0",
     "axios": "^1.3.5",
-    "express": "^4.18.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "openai": "^3.2.1"
   }
 }

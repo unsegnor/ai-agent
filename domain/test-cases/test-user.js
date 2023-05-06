@@ -1,9 +1,9 @@
 module.exports = function(user_interface){
     return Object.freeze({
-        sum
+        createAgent
     })
 
-    async function sum(a, b){
-        return await user_interface.sum(a, b)
+    async function createAgent(){
+        return await user_interface.createAgent()
     }
 }
