@@ -10,6 +10,8 @@ jobs:
   build:
     name: "Test and publish"
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       #Prepare node environment
@@ -43,15 +45,15 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-      # #Increase version in main branch
-      # - name: "Automated Version Bump"
-      #   if: github.ref == 'refs/heads/master'
-      #   id: version-bump
-      #   uses: "phips28/gh-action-bump-version@master"
-      #   with:
-      #     tag-prefix: ''
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #Increase version in main branch
+      - name: "Automated Version Bump"
+        if: github.ref == 'refs/heads/master'
+        id: version-bump
+        uses: "phips28/gh-action-bump-version@master"
+        with:
+          tag-prefix: ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       #Publish to npm in main branch
       - run: npm publish
