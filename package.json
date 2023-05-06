@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unsegnor/agent.git"
+    "url": "git+https://github.com/unsegnor/agent-ai.git"
   },
   "keywords": [
     "ai",
@@ -44,9 +44,9 @@
   "author": "Víctor Calatayud Asensio",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/unsegnor/agent#issues"
+    "url": "https://github.com/unsegnor/agent-ai#issues"
   },
-  "homepage": "https://github.com/unsegnor/agent#readme",
+  "homepage": "https://github.com/unsegnor/agent-ai#readme",
   "dependencies": {
     "aws-sdk": "^2.1363.0",
     "axios": "^1.3.5",

@@ -1,4 +1,4 @@
-# ai-agent
+# agent-ai
 Ai agent abstraction
 
 ## Getting started
