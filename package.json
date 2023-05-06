@@ -1,5 +1,5 @@
 {
-  "name": "agent",
+  "name": "agent-ai",
   "version": "0.1.0",
   "description": "Ai agent abstraction",
   "main": "domain/index.js",
