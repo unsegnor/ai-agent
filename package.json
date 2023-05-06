@@ -1,8 +1,8 @@
 {
-  "name": "new-app-template",
-  "version": "3.3.2",
-  "description": "New application schema",
-  "main": "index.js",
+  "name": "ai-agent",
+  "version": "0.1.0",
+  "description": "Ai agent abstraction",
+  "main": "domain/index.js",
   "dockerHubUsername": "vcalatayud",
   "devDependencies": {
     "@cucumber/cucumber": "^9.1.0",
@@ -33,23 +33,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unsegnor/new-app.git"
+    "url": "git+https://github.com/unsegnor/ai-agent.git"
   },
   "keywords": [
-    "New",
-    "app",
-    "test",
-    "BDD",
-    "gherkins",
-    "cucumber",
-    "CI"
+    "ai",
+    "chat",
+    "gpt",
+    "assistant"
   ],
   "author": "Víctor Calatayud Asensio",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/unsegnor/new-app/issues"
+    "url": "https://github.com/unsegnor/ai-agentissues"
   },
-  "homepage": "https://github.com/unsegnor/new-app#readme",
+  "homepage": "https://github.com/unsegnor/ai-agent#readme",
   "dependencies": {
     "aws-sdk": "^2.1363.0",
     "axios": "^1.3.5",
