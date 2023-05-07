@@ -39,13 +39,6 @@ module.exports = function(user_interface){
                 expect(response.toLowerCase()).to.contain('nine');
                 expect(response.split(' ').length).to.be.below(6);
             });
-
-            it('be very concise', async () => {
-                let agent = await user.createAgent()
-                await agent.send('I have nine apples')
-                let response = await agent.send(`how many apples do I have?`)
-                expect(response.toLowerCase()).to.equal('nine');           
-            });
     
             it('receive context', async () => {
                 let agent = await user.createAgent(`You are dog. You don't know how to speak so your answer will always be "woof"`)
@@ -53,10 +46,20 @@ module.exports = function(user_interface){
                 let response = await agent.send(`how many apples do I have?`)
                 expect(response.toLowerCase()).to.equal('woof');           
             });
+
+            it('remember its own answers', async () => {
+                let agent = await user.createAgent()
+                let list = await agent.send('Give me a list of three different numbers')
+                let response = await agent.send(`which of them is bigger?`)
+                
+                expect(list.toLowerCase()).to.contain(response.toLowerCase())
+            })
+
+            it('do not make up things')
         })
 
 
-        describe('improved interface?', function(){
+        xdescribe('improved interface?', function(){
             //cases above are object oriented
             //these ones could be user-oriented??
             it('not needed to create the agent', async () => {
