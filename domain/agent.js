@@ -7,7 +7,7 @@ module.exports = function(context){
     });
     
     const openai = new OpenAIApi(configuration);
-    const defaultContext = `Be concise. Use the minimum amount of characters to answer. If the answer can be just a single word, answer that word.`
+    const defaultContext = `Be concise. Avoid explanations unless you are asked for it.`
     let messages = []
 
     function addContext(context){
@@ -18,7 +18,8 @@ module.exports = function(context){
     if(context) addContext(context)
 
     return Object.freeze({
-        send
+        send,
+        addContext
     })
 
     async function send(message){

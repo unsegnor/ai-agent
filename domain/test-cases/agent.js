@@ -50,9 +50,17 @@ module.exports = function(user_interface){
             it('remember its own answers', async () => {
                 let agent = await user.createAgent()
                 let list = await agent.send('Give me a list of three different numbers')
-                let response = await agent.send(`which of them is bigger?`)
+                let response = await agent.send(`which of them is bigger? just print the number`)
                 
                 expect(list.toLowerCase()).to.contain(response.toLowerCase())
+            })
+
+            it('can add more context in the middle of the conversation', async () => {
+                let agent = await user.createAgent('You are a dog. You don\'t know how to speak so your answer will always be "woof"')
+                await agent.send('I have nine apples')
+                await agent.addContext('from now on dogs can speak')
+                let response = await agent.send(`how many apples do I have?`)
+                expect(response.toLowerCase()).to.contain('nine');
             })
 
             it('do not make up things')
