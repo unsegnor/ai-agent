@@ -1,20 +1,25 @@
 require('dotenv').config();
+const { Configuration, OpenAIApi } = require("openai");
 
-module.exports = function(){
-
-    const { Configuration, OpenAIApi } = require("openai");
+module.exports = function(context){
     const configuration = new Configuration({
         apiKey: process.env.OPENAI_API_KEY,
     });
+    
     const openai = new OpenAIApi(configuration);
-
-
+    const defaultContext = `Be concise. Avoid explanations unless you are asked for it.`
     let messages = []
 
-    messages.push({role: "system", content: "Be concise. If you can answer correctly with just one word, do it."})
+    function addContext(context){
+        messages.push({role: "system", content: context})    
+    }
+
+    addContext(defaultContext)
+    if(context) addContext(context)
 
     return Object.freeze({
-        send
+        send,
+        addContext
     })
 
     async function send(message){
@@ -27,6 +32,7 @@ module.exports = function(){
           });
 
           response = completion.data.choices[0].message.content;
+          messages.push({role: "assistant", content: response})
           if(response[response.length - 1] == "."){ response = response.slice(0, -1) }
 
           console.log(response)
