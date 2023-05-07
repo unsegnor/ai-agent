@@ -20,8 +20,6 @@
     "test-adapters": "mocha adapters --recursive",
     "test-integration": "mocha test-integration --recursive",
     "test-api": "npm run build-api-image && CONTAINER_NAME=api-auto-test-container && mocha test-http-api --recursive",
-    "test-lambda": "npm run build-lambda-image && CONTAINER_NAME=lambda-auto-test-container && mocha test-lambda-function --recursive",
-    "build-lambda-image": "docker build -t lambda-test-image -f ./lambda-function/Dockerfile .",
     "test-mutation": "npx stryker run",
     "test-cucumber": "cucumber-js",
     "local-api": "node ./http-api/start.js",
@@ -48,7 +46,6 @@
   },
   "homepage": "https://github.com/unsegnor/agent-ai#readme",
   "dependencies": {
-    "aws-sdk": "^2.1363.0",
     "axios": "^1.3.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",

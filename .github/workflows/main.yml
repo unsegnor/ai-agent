@@ -71,4 +71,3 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: |
           ./publish-on-docker-hub.sh "http-api"
-          ./publish-on-docker-hub.sh "lambda-function"
