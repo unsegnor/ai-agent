@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-module.exports = function(){
+module.exports = function(context){
 
     const { Configuration, OpenAIApi } = require("openai");
     const configuration = new Configuration({
@@ -10,8 +10,11 @@ module.exports = function(){
 
 
     let messages = []
+    messages.push({role: "system", content: `Be concise. If you can answer correctly with just one word, do it.`})
 
-    messages.push({role: "system", content: "Be concise. If you can answer correctly with just one word, do it."})
+    if(context){
+        messages.push({role: "system", content: context})
+    }
 
     return Object.freeze({
         send

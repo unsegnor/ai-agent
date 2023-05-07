@@ -1,10 +1,15 @@
 const Agent = require('./agent')
 module.exports = function(){
     return Object.freeze({
-        createAgent
+        createAgent,
+        send
     })
 
-    function createAgent(){
-        return Agent()
+    function createAgent(context){
+        return Agent(context)
+    }
+
+    function send(agentName, message){
+        
     }
 }

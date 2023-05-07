@@ -4,10 +4,16 @@ module.exports = function(){
 
     const app = App()
     return Object.freeze({
-        createAgent
+        createAgent,
+        send
     })
 
-    function createAgent(){
-        return app.createAgent()
+    function createAgent(context){
+        return app.createAgent(context)
+    }
+
+    function send(agentName, message){
+        //we could create here a new agent if it doesn't exist
+        //return app.send(agentName, message)
     }
 }
