@@ -7,20 +7,35 @@ module.exports = function(context){
     });
     
     const openai = new OpenAIApi(configuration);
-    const defaultContext = `Be concise. Avoid explanations unless you are asked for it.`
+    const defaultContext = `Be concise. Avoid explanations unless you are asked.`
     let messages = []
-
-    function addContext(context){
-        messages.push({role: "system", content: context})    
-    }
 
     addContext(defaultContext)
     if(context) addContext(context)
 
     return Object.freeze({
         send,
-        addContext
+        addContext,
+        getContext
     })
+
+    function addContext(context){
+        messages.push({role: "system", content: context})    
+    }
+
+    function getContext(){
+
+        var context = messages[1].content
+
+        for (let index = 2; index < messages.length; index++) {
+            const message = messages[index];
+            if(message.role == "system"){
+                context += "\n" + message.content
+            }
+        }
+
+        return context;
+    }
 
     async function send(message){
         messages.push({role: "user", content: message})
