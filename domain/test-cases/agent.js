@@ -56,14 +56,29 @@ module.exports = function(user_interface){
             })
 
             it('can add more context in the middle of the conversation', async () => {
-                let agent = await user.createAgent('You are a dog. You don\'t know how to speak so your answer will always be "woof"')
+                let agent = await user.createAgent(`You are a dog. You don't know how to speak so your answer will always be "woof"`)
                 await agent.send('I have nine apples')
                 await agent.addContext('from now on dogs can speak')
                 let response = await agent.send(`how many apples do I have?`)
                 expect(response.toLowerCase()).to.contain('nine');
             })
 
-            it('do not make up things')
+            it('can get the current context', async () => {
+                let agent = await user.createAgent(`You are a dog. You don't know how to speak so your answer will always be "woof"`)
+                await agent.addContext('from now on dogs can speak')
+                let context = await agent.getContext()
+                expect(context).to.equal(`You are a dog. You don't know how to speak so your answer will always be "woof"\nfrom now on dogs can speak`)
+            })
+
+            it('context does not contain conversation', async () => {
+                let agent = await user.createAgent(`You are a dog. You don't know how to speak so your answer will always be "woof"`)
+                await agent.send('I have nine apples')
+                await agent.addContext('from now on dogs can speak')
+                let context = await agent.getContext()
+                expect(context).to.equal(`You are a dog. You don't know how to speak so your answer will always be "woof"\nfrom now on dogs can speak`)
+            })
+
+            it('do not make things up')
         })
 
 
