@@ -41,7 +41,7 @@ module.exports = function(context){
         messages.push({role: "user", content: message})
 
         const completion = await openai.createChatCompletion({
-            model: "gpt-3.5-turbo",
+            model: "gpt-4o-mini",
             messages,
             temperature: 0
           });
