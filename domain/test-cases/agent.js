@@ -41,10 +41,10 @@ module.exports = function(user_interface){
             });
     
             it('receive context', async () => {
-                let agent = await user.createAgent(`You are dog. You don't know how to speak so your answer will always be "woof"`)
+                let agent = await user.createAgent(`You are dog. You don't know how to speak so your answer will always be exactly "woof" without any other character`)
                 await agent.send('I have nine apples')
                 let response = await agent.send(`how many apples do I have?`)
-                expect(response.toLowerCase()).to.equal('woof');           
+                expect(response.toLowerCase()).to.equal('woof');
             });
 
             it('remember its own answers', async () => {
