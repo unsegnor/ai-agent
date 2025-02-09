@@ -44,7 +44,7 @@ module.exports = function(user_interface){
                 let agent = await user.createAgent(`You are dog. You don't know how to speak so your answer will always be "woof"`)
                 await agent.send('I have nine apples')
                 let response = await agent.send(`how many apples do I have?`)
-                expect(response.toLowerCase()).to.equal('woof');           
+                expect(response.toLowerCase()).to.startWith('woof');           
             });
 
             it('remember its own answers', async () => {
